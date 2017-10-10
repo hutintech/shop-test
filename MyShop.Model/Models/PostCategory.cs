@@ -1,12 +1,11 @@
-﻿using MyShop.Model.Abstract;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyShop.Model.Models
 {
-    [Table("ProductCategories")]
-    public class ProductCategory : Audiable
+    [Table("PostCategories")]
+    public class PostCategory
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,6 +16,7 @@ namespace MyShop.Model.Models
         public string Name { get; set; }
 
         [Required]
+        [Column(TypeName = "varchar")]
         [MaxLength(256)]
         public string Alias { get; set; }
 
@@ -30,7 +30,6 @@ namespace MyShop.Model.Models
         public string Image { get; set; }
 
         public bool? HomeFlag { get; set; }
-
-        public virtual IEnumerable<Product> Products { get; set; }
+        public virtual IEnumerable<Post> Posts { get; set; }
     }
 }

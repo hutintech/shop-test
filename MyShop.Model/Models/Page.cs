@@ -1,12 +1,11 @@
 ﻿using MyShop.Model.Abstract;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyShop.Model.Models
 {
-    [Table("ProductCategories")]
-    public class ProductCategory : Audiable
+    [Table("Pages")]
+    public class Page : Audiable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,20 +16,10 @@ namespace MyShop.Model.Models
         public string Name { get; set; }
 
         [Required]
+        [Column(TypeName = "varchar")]
         [MaxLength(256)]
         public string Alias { get; set; }
 
-        [MaxLength(500)]
-        public string Description { get; set; }
-
-        public int? ParentId { get; set; }
-        public int? DisplayOrder { get; set; }
-
-        [MaxLength(256)]
-        public string Image { get; set; }
-
-        public bool? HomeFlag { get; set; }
-
-        public virtual IEnumerable<Product> Products { get; set; }
+        public string Content { get; set; }
     }
 }
